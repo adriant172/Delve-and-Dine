@@ -1,13 +1,15 @@
 from math import floor
 from random import randrange
+from helper_functions import slow_print
 
 class Character:
-    def __init__(self, name, health, stamina, attack, defense):
+    def __init__(self, name, health, stamina, attack, defense, base_damage):
         self.__name = name
         self.__health = health
         self.__stamina = stamina
         self.__attack = attack
         self.__defense = defense
+        self.__base_damage = base_damage
         inventory = []
         armor = None
         weapon = None
@@ -18,6 +20,9 @@ class Character:
     def get_health(self):
         """Health points getter"""
         return self.__health
+    def get_base_damage(self):
+        """Base damage getter"""
+        return self.__base_damage
     def get_attack_level(self):
         """Attack level getter"""
         return self.__attack
@@ -31,11 +36,12 @@ class Character:
 
 class Player(Character):
     def basic_attack(self):
-        possible_actions = ["punch","kick", "dropkick", "uppercut"]
+        possible_actions = [" a punch"," a kick", " a dropkick", " an uppercut"]
         random_num = randrange(len(possible_actions))
-        print(f"You attack the enemy with a {possible_actions[random_num]}")
+        slow_print(f"You attack the enemy with {possible_actions[random_num]}", 0.02)
+
 
 
 class Monster(Character):
     def attack(self):
-        print("a monster swipes at the player")
+        slow_print(f"The {self.get_name()} swipes at the player", 0.02)
