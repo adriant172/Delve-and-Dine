@@ -10,9 +10,10 @@ class Character:
         self.__attack = attack
         self.__defense = defense
         self.__base_damage = base_damage
-        inventory = []
-        armor = None
-        weapon = None
+        self.__inventory = []
+        self.__armor = None
+        self.__weapon = None
+        self.__defending = False
 
     def get_name(self):
         return self.__name
@@ -30,7 +31,17 @@ class Character:
         """Defense level getter"""
         return self.__defense
     def take_damage(self, damage_points):
+        if self.__defending:
+            damage_points = damage_points - self.__defense
+            damage_points = max(damage_points, 0)
         self.__health -= damage_points
+        self.__defending = False
+    def toggle_guard(self):
+        if not self. __defending:
+            self.__defending = True
+        else:
+            self.__defending = False
+
 
     
 

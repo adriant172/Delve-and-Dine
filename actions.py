@@ -12,3 +12,4 @@ def apply_damage(attacker,defender):
         damage_taken = actual_attack * actual_attack / defense_level
     defender.take_damage(damage_taken)
     return damage_taken
+
