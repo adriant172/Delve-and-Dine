@@ -1,6 +1,7 @@
 from math import floor
 from random import randrange
 from helper_functions import slow_print
+from items import Weapon, Armor, Item, Food
 
 class Character:
     def __init__(self, name, health, stamina, attack, defense, base_damage):
@@ -36,11 +37,18 @@ class Character:
             damage_points = max(damage_points, 0)
         self.__health -= damage_points
         self.__defending = False
+        return damage_points
     def toggle_guard(self):
         if not self. __defending:
             self.__defending = True
         else:
             self.__defending = False
+    def equip(self, item):
+        if isinstance(item, Weapon):
+            self.__weapon = item
+            self.__attack += item.attack
+        elif isinstance(item, Armor):
+            self.__armor = item
 
 
     
