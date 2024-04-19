@@ -1,11 +1,24 @@
-import sys, time
+import time
+from rich.console import Console
+from rich.theme import Theme
 
-def slow_print(line, speed):
-    """This function is meant to 
-    print words as if they are 
-    being typed out on a screen"""
-    for char in line:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(speed)
-    print("\n")
+console = Console()
+# import sys, time
+
+# def slow_print(line, speed):
+#     """This function is meant to 
+#     print words as if they are 
+#     being typed out on a screen"""
+#     for char in line:
+#         sys.stdout.write(char)
+#         sys.stdout.flush()
+#         time.sleep(speed)
+#     print("\n")
+
+
+
+def slow_print(text, delay=0.1):
+    for character in text:
+        console.print(character, end='',)
+        time.sleep(delay)
+    console.print()  # for newline
