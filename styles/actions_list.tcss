@@ -1,0 +1,9 @@
+ActionsList {
+    align: center middle;
+}
+
+#actions {
+    padding: 0 1;
+    width: 60;
+    height: 11;
+}

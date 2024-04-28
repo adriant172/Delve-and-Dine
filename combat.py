@@ -1,15 +1,23 @@
 from actions import apply_damage
 import time
 from helper_functions import slow_print
+from rich.prompt import Prompt
+from pick import pick
+# from actions_textual import ActionsList
+
 
 TEXT_PRINT_TIME = 0.005
+combat_options_title = "What would you like to do ?"
+combat_options = ["Attack", "Defend", "Eat Food", "Equip"]
 
 def basic_combat_interaction(player, enemy):
     """Basic turn based combat loop between the player and one enemy"""
     player_turn = True
     while True:
         while player_turn:
-            action = input("Would you like to attack or defend?: ")
+            time.sleep(1)
+            action, action_index = pick(combat_options, combat_options_title, indicator="=>")
+            # action = Prompt.ask(combat_options_title, choices=combat_options, default="Attack")        
             if action.lower().strip() == "attack":
                 player.basic_attack()
                 time.sleep(1)
@@ -18,6 +26,9 @@ def basic_combat_interaction(player, enemy):
                 time.sleep(1)
             elif action.lower() == "defend":
                 player.toggle_guard()
+            elif action.lower() == "eat food":
+                selected_item = player._inventory.choose_item("food")
+                player.eat_food(selected_item)
             else:
                 print("You can only enter ATTACK or DEFEND")
                 continue

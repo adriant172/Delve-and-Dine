@@ -1,10 +1,15 @@
+
+HEAL = "heal"
+DEFENSE_INCREASE = "defense_buff"
+DAMAGE_INCREASE = "damage_buff"
+
 class Item:
     """Base class for all items in the game"""
     def __init__(self, name, description=None):
-        self.__name = name
+        self._name = name
         self.description = description
     def get_name(self):
-        return self.__name
+        return self._name
 
 
 class Weapon(Item):
@@ -22,7 +27,7 @@ class Armor(Item):
         self.defense = defense
 
 class Food(Item):
-    def __init__(self, name, buff_type, buff_amount, duration, is_ingredient, description=None):
+    def __init__(self, name, buff_type, buff_amount, is_ingredient,duration=None, description=None):
         super().__init__(name, description)
         self.buff_type = buff_type
         self.buff_amount = buff_amount
