@@ -5,8 +5,7 @@ class Inventory:
         self.all_items = {
             "food": {},
             "other": {},
-            "weapons": {},
-            "armor":{}
+            "equipment": {},
         }
     def choose_item(self, item_category):
         all_category_items = []
@@ -15,6 +14,8 @@ class Inventory:
         selected_item, item_index = pick(all_category_items, "Items", indicator="=>")
         selected_item = self.all_items[item_category][selected_item]
         return selected_item
+    def get_item(item_category, item):
+        return 
 
 
 

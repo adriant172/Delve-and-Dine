@@ -12,6 +12,7 @@ combat_options = ["Attack", "Defend", "Eat Food", "Equip"]
 
 def basic_combat_interaction(player, enemy):
     """Basic turn based combat loop between the player and one enemy"""
+    slow_print(f"A {enemy._name} has appeared", TEXT_PRINT_TIME)
     player_turn = True
     while True:
         while player_turn:
@@ -29,9 +30,9 @@ def basic_combat_interaction(player, enemy):
             elif action.lower() == "eat food":
                 selected_item = player._inventory.choose_item("food")
                 player.eat_food(selected_item)
-            else:
-                print("You can only enter ATTACK or DEFEND")
-                continue
+            elif action.lower() == "equip":
+                selected_item = player._inventory.choose_item("equipment")
+                player.equip(selected_item)
             if enemy.get_health() <= 0:
                 print(f"The {enemy.get_name()} has been defeated!")
                 print("--------------------------------------------")
