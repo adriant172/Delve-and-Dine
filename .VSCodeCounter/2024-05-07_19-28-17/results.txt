@@ -1,0 +1,34 @@
+Date : 2024-05-07 19:28:17
+Directory : /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine
+Total : 9 files,  242 codes, 12 comments, 48 blanks, all 302 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Python   |          8 |        240 |         12 |         47 |        299 |
+| Markdown |          1 |          2 |          0 |          1 |          3 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                        | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                           |          9 |        242 |         12 |         48 |        302 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                    | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/README.md           | Markdown |          2 |          0 |          1 |          3 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/actions.py          | Python   |         14 |          0 |          4 |         18 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/characters.py       | Python   |         95 |          0 |         10 |        105 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/combat.py           | Python   |         53 |          2 |          3 |         58 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/console_menu.py     | Python   |          6 |          0 |          2 |          8 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/helper_functions.py | Python   |          9 |         10 |          5 |         24 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/inventory.py        | Python   |         19 |          0 |          5 |         24 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/items.py            | Python   |         30 |          0 |          8 |         38 |
+| /Users/matthewthomas1/dev-personal/github.com/adriant172/Delve-and-Dine/main.py             | Python   |         14 |          0 |         10 |         24 |
+| Total                                                                                       |          |        242 |         12 |         48 |        302 |
++---------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

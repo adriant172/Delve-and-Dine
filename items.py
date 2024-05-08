@@ -8,6 +8,7 @@ class Item:
     def __init__(self, name, description=None):
         self._name = name
         self.description = description
+        self.is_equipped = False
     def get_name(self):
         return self._name
 

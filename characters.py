@@ -21,10 +21,15 @@ class Character:
 
     def get_name(self):
         return self._name
-
+    def get_max_health(self):
+        """max health points getter"""
+        return self._max_health
     def get_health(self):
         """Health points getter"""
         return self._health
+    def get_stamina(self):
+        """Stamina points getter"""
+        return self._stamina
     def get_base_damage(self):
         """Base damage getter"""
         return self._base_damage
@@ -34,6 +39,14 @@ class Character:
     def get_defense_level(self):
         """Defense level getter"""
         return self._defense
+    def get_basic_stats(self):
+        return {
+            "current_health": self._health,
+            "max_health": self._max_health,
+            "stamina": self._stamina,
+            "attack": self._attack,
+            "defense": self._defense
+        }
     def take_damage(self, damage_points):
         if self._defending:
             damage_points = damage_points - self._defense

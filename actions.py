@@ -11,5 +11,7 @@ def apply_damage(attacker,defender):
         damage_taken = actual_attack * 2 - defense_level
     else:
         damage_taken = round(actual_attack * actual_attack / defense_level)
+    if damage_taken < 0:
+        damage_taken = 0
     return defender.take_damage(damage_taken)
 

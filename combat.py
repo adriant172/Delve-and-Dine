@@ -3,12 +3,13 @@ import time
 from helper_functions import slow_print
 from rich.prompt import Prompt
 from pick import pick
+from console_menu import show_stats_menu
 # from actions_textual import ActionsList
 
 
 TEXT_PRINT_TIME = 0.005
 combat_options_title = "What would you like to do ?"
-combat_options = ["Attack", "Defend", "Eat Food", "Equip"]
+combat_options = ["Attack", "Defend", "Eat Food", "Equip", "Stats"]
 
 def basic_combat_interaction(player, enemy):
     """Basic turn based combat loop between the player and one enemy"""
@@ -17,7 +18,7 @@ def basic_combat_interaction(player, enemy):
     while True:
         while player_turn:
             time.sleep(1)
-            action, action_index = pick(combat_options, combat_options_title, indicator="=>")
+            action, action_index = pick(combat_options, combat_options_title, indicator="—>")
             # action = Prompt.ask(combat_options_title, choices=combat_options, default="Attack")        
             if action.lower().strip() == "attack":
                 player.basic_attack()
@@ -32,7 +33,12 @@ def basic_combat_interaction(player, enemy):
                 player.eat_food(selected_item)
             elif action.lower() == "equip":
                 selected_item = player._inventory.choose_item("equipment")
+                selected_item.is_equiped = True
                 player.equip(selected_item)
+            elif action.lower() == "stats":
+                stats = player.get_basic_stats()
+                show_stats_menu(stats)
+                continue
             if enemy.get_health() <= 0:
                 print(f"The {enemy.get_name()} has been defeated!")
                 print("--------------------------------------------")
