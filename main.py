@@ -1,11 +1,4 @@
-from characters import Player, Monster
-from items import Weapon, Armor, Item, Food, HEAL, DEFENSE_INCREASE, DAMAGE_INCREASE
-from combat import basic_combat_interaction
 
-
-steel_sword = Weapon("Short Sword", "sword", 5, "A simple steel sword")
-pork_roast = Food("pork roast", HEAL, 25, is_ingredient=False)
-leather_armor = Armor("Weathered Leather Armor", "Medium Armor", 5, "A basic leather armor")
 
 
 def main():

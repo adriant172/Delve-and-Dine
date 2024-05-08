@@ -32,6 +32,9 @@ def basic_combat_interaction(player, enemy):
                 selected_item = player._inventory.choose_item("food")
                 player.eat_food(selected_item)
             elif action.lower() == "equip":
+                if len(player._inventory.all_items["equipment"]) == 0:
+                    slow_print("No items to equip")
+                    continue
                 selected_item = player._inventory.choose_item("equipment")
                 selected_item.is_equiped = True
                 player.equip(selected_item)

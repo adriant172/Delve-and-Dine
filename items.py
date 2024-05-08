@@ -34,4 +34,3 @@ class Food(Item):
         self.buff_amount = buff_amount
         self.duration = duration
         self.is_ingredient = is_ingredient
-
