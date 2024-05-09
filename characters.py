@@ -99,7 +99,7 @@ class Player(Character):
             slow_print(f"You attack the enemy with {possible_actions[random_num]}", 0.02)
 
 
-class Monster(Character):
+class Enemy(Character):
     """ Subclass for all basic monsters or enemies in game"""
     def attack(self):
-        slow_print(f"The {self.get_name()} swipes at the player", 0.02)
+        slow_print(f"The {self.get_name()} attacks the player", 0.02)

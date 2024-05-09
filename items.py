@@ -28,9 +28,10 @@ class Armor(Item):
         self.defense = defense
 
 class Food(Item):
-    def __init__(self, name, buff_type, buff_amount, is_ingredient,duration=None, description=None):
+    def __init__(self, name, is_ingredient,buff_type=None, buff_amount=None, duration=None, description=None):
         super().__init__(name, description)
         self.buff_type = buff_type
         self.buff_amount = buff_amount
         self.duration = duration
         self.is_ingredient = is_ingredient
+        self.req_ingredients = []
