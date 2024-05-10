@@ -14,7 +14,7 @@ PLAYER = Player(name="Traveler",health=125,stamina=50,attack=8,defense=5, base_d
 base_style = Style(color="red", blink=True, bold=True)
 
 steel_sword = Weapon("Short Sword", "sword", 5, "A simple steel sword")
-pork_roast = Food("pork roast", HEAL, 25, is_ingredient=False)
+pork_roast = Food("pork roast",is_ingredient=False, buff_type=HEAL, buff_amount=25)
 leather_armor = Armor("Weathered Leather Armor", "Medium Armor", 5, "A basic leather armor")
 
 goblin = Enemy(name="goblin",health=50,stamina=20,attack=5,defense=1, base_damage=2)

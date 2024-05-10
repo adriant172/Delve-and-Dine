@@ -29,6 +29,9 @@ def basic_combat_interaction(player, enemy):
             elif action.lower() == "defend":
                 player.toggle_guard()
             elif action.lower() == "eat food":
+                if len(player._inventory.all_items["food"]) == 0:
+                    slow_print("Your bag is empty..")
+                    continue
                 selected_item = player._inventory.choose_item("food")
                 player.eat_food(selected_item)
             elif action.lower() == "equip":
@@ -44,7 +47,6 @@ def basic_combat_interaction(player, enemy):
                 continue
             if enemy.get_health() <= 0:
                 print(f"The {enemy.get_name()} has been defeated!")
-                print("--------------------------------------------")
                 return
             slow_print(f"{enemy.get_name()} has {enemy.get_health()} health remaining.", TEXT_PRINT_TIME)
             player_turn = False

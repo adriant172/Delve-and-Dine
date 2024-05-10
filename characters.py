@@ -80,6 +80,7 @@ class Character:
             self._defense += food.buff_amount
         elif food.buff_type == DAMAGE_INCREASE:
             self._attack += food.buff_amount
+    
         
 
 
