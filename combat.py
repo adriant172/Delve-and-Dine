@@ -7,7 +7,7 @@ from console_menu import show_stats_menu
 # from actions_textual import ActionsList
 
 
-TEXT_PRINT_TIME = 0.005
+TEXT_PRINT_TIME = 0.010
 combat_options_title = "What would you like to do ?"
 combat_options = ["Attack", "Defend", "Eat Food", "Equip", "Stats"]
 
@@ -39,15 +39,23 @@ def basic_combat_interaction(player, enemy):
                     slow_print("No items to equip")
                     continue
                 selected_item = player._inventory.choose_item("equipment")
-                selected_item.is_equiped = True
-                player.equip(selected_item)
+                if selected_item.is_equipped == True:
+                    selected_item.is_equipped = False
+                    player.unequip(selected_item)
+                else:
+                    selected_item.is_equipped = True
+                    player.equip(selected_item)
             elif action.lower() == "stats":
                 stats = player.get_basic_stats()
                 show_stats_menu(stats)
                 continue
             if enemy.get_health() <= 0:
                 print(f"The {enemy.get_name()} has been defeated!")
-                return
+                random_item = enemy._inventory.pick_random_item("food")
+                loot = enemy._inventory.remove_item(random_item)
+                player._inventory.insert_item(loot)
+                print(f" You have found {loot._name}")
+                return True
             slow_print(f"{enemy.get_name()} has {enemy.get_health()} health remaining.", TEXT_PRINT_TIME)
             player_turn = False
         enemy.attack()
@@ -58,6 +66,6 @@ def basic_combat_interaction(player, enemy):
         if player.get_health() <= 0:
             print("You have fainted")
             print("GAME OVER")
-            return
+            return False
         slow_print(f"You have {player.get_health()} remaining.", TEXT_PRINT_TIME)
         player_turn = True

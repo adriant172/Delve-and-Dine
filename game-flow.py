@@ -8,18 +8,18 @@ from rich.style import Style
 from rich.prompt import Prompt
 from food import salt
 
-TEXT_PRINT_TIME = 0.010
+TEXT_PRINT_TIME = 0.005
 
 PLAYER = Player(name="Traveler",health=125,stamina=50,attack=8,defense=5, base_damage=3)
 base_style = Style(color="red", blink=True, bold=True)
 
-steel_sword = Weapon("Short Sword", "sword", 5, "A simple steel sword")
+steel_sword = Weapon("Short Sword", False,"sword", 5, "A simple steel sword")
 pork_roast = Food("pork roast",is_ingredient=False, buff_type=HEAL, buff_amount=25)
 leather_armor = Armor("Weathered Leather Armor", "Medium Armor", 5, "A basic leather armor")
 
 goblin = Enemy(name="goblin",health=50,stamina=20,attack=5,defense=1, base_damage=2)
-goblin._inventory.all_items["food"]["salt"] = salt
-
+goblin._inventory.all_items["food"][salt._name] = salt
+PLAYER._inventory.all_items["equipment"][steel_sword.get_name()] = steel_sword
 
 
 def run_game():
@@ -42,6 +42,12 @@ def run_game():
     slow_print(f"You decide to take the {current_direction} path", style="italic cyan")
     slow_print("You enter a darkly lit room, and hear rattling behind you...")
     sleep(1)
-    basic_combat_interaction(PLAYER, goblin)
+    result = basic_combat_interaction(PLAYER, goblin)
+    if result is False:
+        return
+    slow_print("You light a torch so you can have a better look at what is inside the room?")
+    action, action_index = pick(["Search the room.", "Check Inventory", "Move to another room"], "What do you do next ?", indicator="—>")
+
+
 
 run_game()

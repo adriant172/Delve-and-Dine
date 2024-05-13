@@ -67,6 +67,14 @@ class Character:
             self._armor = item
             self._defense += item.defense
         slow_print(f"You have equipped {item.get_name()}", 0.02)
+    def unequip(self, item):
+        if isinstance(item, Weapon):
+            self._weapon = None
+            self._attack -= item.attack    
+        elif isinstance(item, Armor):
+            self._armor = None
+            self._defense -= item.defense
+        slow_print(f"You have unequipped {item.get_name()}", 0.02)
     def eat_food(self, food):
         if food.buff_type == HEAL:
             new_health = self._health + food.buff_amount

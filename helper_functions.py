@@ -17,7 +17,7 @@ console = Console()
 
 
 
-def slow_print(text, delay=0.010, style=None):
+def slow_print(text, delay=0.001, style=None):
     for character in text:
         console.print(character, end='', style=style)
         time.sleep(delay)
