@@ -39,6 +39,8 @@ def basic_combat_interaction(player, enemy):
                     slow_print("No items to equip")
                     continue
                 selected_item = player._inventory.choose_item("equipment")
+                if selected_item is None:
+                    continue
                 if selected_item.is_equipped == True:
                     selected_item.is_equipped = False
                     player.unequip(selected_item)

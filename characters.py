@@ -62,7 +62,7 @@ class Character:
     def equip(self, item):
         if isinstance(item, Weapon):
             self._weapon = item
-            self._attack += item.attack    
+            self._attack += item.attack
         elif isinstance(item, Armor):
             self._armor = item
             self._defense += item.defense

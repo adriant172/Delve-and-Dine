@@ -10,26 +10,28 @@ class Inventory:
             "other": {},
             "equipment": {},
         }
-    def choose_category(self, item_category):
+    def choose_category(self):
         all_categories = []
         for category in self.all_items:
             all_categories.append(category)
+        all_categories.append("EXIT")
         selected_item, item_index = pick(all_categories, "Inventory", indicator="—>")
-        all_categories.append("<-- Back")
-        if selected_item == "<-- Back":
+        
+        if selected_item == "EXIT":
             return None
         return selected_item
     def choose_item(self, item_category):
+        """Used to select equippable items , such as weapons and armor""" 
         all_category_items = []
         for item in self.all_items[item_category]:
-            if self.all_items[item_category][item].is_equipped is True:
+            if item_category != "food" and self.all_items[item_category][item].is_equipped is True:
                 item = f"{item} - [Equipped]"
             all_category_items.append(item)
-        all_category_items.append("<-- Back")
+        all_category_items.append("Go Back")
         selected_item, item_index = pick(all_category_items, "Items", indicator="—>")
-        selected_item = self.all_items[item_category][selected_item.replace(" - [Equipped]", "")]
-        if selected_item == "<-- Back":
+        if selected_item == "Go Back":
             return None
+        selected_item = self.all_items[item_category][selected_item.replace(" - [Equipped]", "")]
         return selected_item
     def insert_item(self, item):
         if isinstance(item, Food):
