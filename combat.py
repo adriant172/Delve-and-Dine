@@ -57,7 +57,7 @@ def basic_combat_interaction(player, enemy):
                 loot = enemy._inventory.remove_item(random_item)
                 player._inventory.insert_item(loot)
                 slow_print(f" You have found {loot._name}")
-                return True
+                return player
             slow_print(f"{enemy.get_name()} has {enemy.get_health()} health remaining.", TEXT_PRINT_TIME)
             player_turn = False
         enemy.attack()

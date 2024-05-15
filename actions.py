@@ -6,7 +6,7 @@ def apply_damage(attacker,defender):
     base_damage = attacker.get_base_damage()
     attack_level = attacker.get_attack_level()
     defense_level = defender.get_defense_level()
-    actual_attack = randrange(base_damage, base_damage + attack_level)
+    actual_attack = randrange(attack_level - base_damage, base_damage + attack_level)
     if attack_level >= defense_level:
         damage_taken = actual_attack * 2 - defense_level
     else:
