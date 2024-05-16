@@ -15,6 +15,7 @@ TEXT_PRINT_TIME = 0.010
 
 player = Player(name="Traveler",health=100,stamina=50,attack=8,defense=5, base_damage=3)
 base_style = Style(color="red", blink=True, bold=True)
+narration_style = Style(color="cyan", italic=True)
 
 steel_sword = Weapon("Short Sword", False,"sword", 5, "A simple steel sword")
 pork_roast = Food("pork roast",is_ingredient=False, buff_type=HEAL, buff_amount=25)
@@ -25,6 +26,7 @@ cave_boar = Enemy(name="Boar", health=40, stamina=10, attack=3, defense=1, base_
 slime = Enemy(name="Slime", health=25, stamina=10, attack=3, defense=2, base_damage= 1)
 goblin.inventory.all_items["food"][goblin_bread.get_name()] = goblin_bread
 cave_boar.inventory.all_items["food"][boar_meat.get_name()] = boar_meat
+player.inventory.insert_item(steel_sword)
 
 
 
@@ -99,10 +101,10 @@ def main(player):
     player.set_name(name)
     slow_print(f"All right, {name} Enter at your own risk!")
     sleep(1)
-    slow_print("You slowly descend down a spiral staircase, once you reach the bottom you come across two paths. Which do you take?", style="italic cyan")
+    slow_print("You slowly descend down a spiral staircase, once you reach the bottom you come across two paths. Which do you take?", style=narration_style)
     current_direction = Prompt.ask("Which way ? ", choices=["left", "right"], default="left")
-    slow_print(f"You decide to take the {current_direction} path", style="italic cyan")
-    slow_print("You enter a darkly lit room, and hear squeals and footsteps speeding towards you...", style="italic cyan")
+    slow_print(f"You decide to take the {current_direction} path", style=narration_style)
+    slow_print("You enter a darkly lit room, and hear squeals and footsteps speeding towards you...", style=narration_style)
     sleep(1)
     player = basic_combat_interaction(player, cave_boar)
     if player.get_health() <= 0:
@@ -112,18 +114,19 @@ def main(player):
     print("Press enter to continue...")
     input()
     room_actions("As you search the room you find something tucked under a pile of bones", leather_armor)
-    slow_print("You decide to move forward...You squeeze through a tight corridor into the next room", style="italic cyan")
-    slow_print("You find what appears to be old dungeon cells, and you murmuring and grunts coming from one of the cells.")
-    slow_print("Looks like you stumbled upon something trying to loot this place as well..")
+    slow_print("You decide to move forward...You squeeze through a tight corridor into the next room", style=narration_style)
+    slow_print("You find what appears to be old dungeon cells, and you murmuring and grunts coming from one of the cells.", style=narration_style)
+    slow_print("Looks like you stumbled upon something trying to loot this place as well..", style=narration_style)
+    print("Press enter to continue...")
+    input()
     result = basic_combat_interaction(player, goblin)
     if result is False:
         return
     slow_print("With the area clear you decide to...")
     sleep(1)
-    print("Press enter to continue...")
     input()
     room_actions("You rummage through each cell to find something worthwhile. Alas your diligence was rewarded", salt)
-    slow_print("As you make your way forward, it appears you found a shortcut to the surface")
-    slow_print("Since this your first time entering this place it is probably best to part and stock up on supplies")
+    slow_print("As you make your way forward, it appears you found a shortcut to the surface", style=narration_style)
+    slow_print("Since this your first time entering this place it is probably best to part and stock up on supplies", style=narration_style)
 
 main(player)
