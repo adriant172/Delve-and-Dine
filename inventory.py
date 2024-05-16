@@ -1,7 +1,7 @@
 """Contains the Inventory class"""
 import random
 from pick import pick
-from items import Weapon, Armor, Food, HEAL, DEFENSE_INCREASE, DAMAGE_INCREASE
+from items import Weapon, Armor, Food
 
 class Inventory:
     """This is the primary class for Inventory objects"""
@@ -38,11 +38,11 @@ class Inventory:
         """Takes an item and inserts it into 
         the inventory based on its class type"""
         if isinstance(item, Food):
-            self.all_items["food"][item._name] = item
+            self.all_items["food"][item.get_name()] = item
         elif isinstance(item, Weapon) or isinstance(item, Armor):
-            self.all_items["equipment"][item._name] = item
+            self.all_items["equipment"][item.get_name()] = item
         else:
-            self.all_items["other"][item._name] = item
+            self.all_items["other"][item.get_name()] = item
         return
     def remove_item(self, item):
         """Takes an item and removes it from 

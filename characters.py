@@ -19,6 +19,9 @@ class Character:
         self._weapon = None
         self._defending = False
 
+    def set_name(self, name):
+        """character name setter"""
+        self._name = name
     def get_name(self):
         """character name getter"""
         return self._name
@@ -40,6 +43,12 @@ class Character:
     def get_defense_level(self):
         """Defense level getter"""
         return self._defense
+    def get_armor(self):
+        """Currently equipped armor item getter"""
+        return self._armor
+    def get_weapon(self):
+        """Currently equipped weapon item getter"""
+        return self._weapon
     def get_basic_stats(self):
         """Returns an object containing all relevant stats"""
         return {

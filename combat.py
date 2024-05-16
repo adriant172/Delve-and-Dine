@@ -12,7 +12,7 @@ combat_options = ["Attack", "Defend", "Eat Food", "Equip", "Stats"]
 
 def basic_combat_interaction(player, enemy):
     """Basic turn based combat loop between the player and one enemy"""
-    slow_print(f"A {enemy._name} has appeared", TEXT_PRINT_TIME)
+    slow_print(f"A {enemy.get_name()} has appeared", TEXT_PRINT_TIME)
     time.sleep(1)
     player_turn = True
     while True:
@@ -55,7 +55,7 @@ def basic_combat_interaction(player, enemy):
                 random_item = enemy.inventory.pick_random_item("food")
                 loot = enemy.inventory.remove_item(random_item)
                 player.inventory.insert_item(loot)
-                slow_print(f" You have found {loot._name}")
+                slow_print(f" You have found {loot.get_name()}")
                 return player
             slow_print(f"{enemy.get_name()} has {enemy.get_health()} health remaining.", TEXT_PRINT_TIME)
             player_turn = False

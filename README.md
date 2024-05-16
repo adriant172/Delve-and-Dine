@@ -17,4 +17,3 @@ Things I would like to implement in the future would be:
 - Adding special attacks to utilize the stamina stat
 - Adding cooking mechanic
 - Adding a gameplay flow to sell and cook items at the end of a run
-- 
