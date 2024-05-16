@@ -1,4 +1,4 @@
-
+"""This contains the Items class and all of its subclasses"""
 HEAL = "heal"
 DEFENSE_INCREASE = "defense_buff"
 DAMAGE_INCREASE = "damage_buff"

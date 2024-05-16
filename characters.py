@@ -1,11 +1,11 @@
-from math import floor
+""" Contains the classes for player and NPC types"""
 from random import randrange
+from items import Weapon, Armor, HEAL, DEFENSE_INCREASE, DAMAGE_INCREASE
 from helper_functions import slow_print
-from items import Weapon, Armor, Item, Food, HEAL, DEFENSE_INCREASE, DAMAGE_INCREASE
-from rich import print
 from inventory import Inventory
 
 class Character:
+    """Base class for all character types"""
     def __init__(self, name, health, stamina, attack, defense, base_damage):
         self._name = name
         self._health = health
@@ -14,12 +14,13 @@ class Character:
         self._attack = attack
         self._defense = defense
         self._base_damage = base_damage
-        self._inventory = Inventory()
+        self.inventory = Inventory()
         self._armor = None
         self._weapon = None
         self._defending = False
 
     def get_name(self):
+        """character name getter"""
         return self._name
     def get_max_health(self):
         """max health points getter"""
@@ -40,6 +41,7 @@ class Character:
         """Defense level getter"""
         return self._defense
     def get_basic_stats(self):
+        """Returns an object containing all relevant stats"""
         return {
             "current_health": self._health,
             "max_health": self._max_health,
@@ -48,6 +50,8 @@ class Character:
             "defense": self._defense
         }
     def take_damage(self, damage_points):
+        """Apply damage to the current character 
+        based on damage points parameter"""
         if self._defending:
             damage_points = damage_points - self._defense
             damage_points = max(damage_points, 0)
@@ -55,11 +59,13 @@ class Character:
         self._defending = False
         return damage_points
     def toggle_guard(self):
+        """Toggles the guard action"""
         if not self._defending:
             self._defending = True
         else:
             self._defending = False
     def equip(self, item):
+        """Takes an equipment item as a parameter and equips said item"""
         if isinstance(item, Weapon):
             self._weapon = item
             self._attack += item.attack
@@ -68,6 +74,7 @@ class Character:
             self._defense += item.defense
         slow_print(f"You have equipped {item.get_name()}", 0.02)
     def unequip(self, item):
+        """Takes an equipment item as a parameter and unequip said item"""
         if isinstance(item, Weapon):
             self._weapon = None
             self._attack -= item.attack    
@@ -76,6 +83,7 @@ class Character:
             self._defense -= item.defense
         slow_print(f"You have unequipped {item.get_name()}", 0.02)
     def eat_food(self, food):
+        """Takes a food item as a parameter and consumes it"""
         if food.buff_type == HEAL:
             new_health = self._health + food.buff_amount
             if new_health > self._max_health:
@@ -88,27 +96,25 @@ class Character:
             self._defense += food.buff_amount
         elif food.buff_type == DAMAGE_INCREASE:
             self._attack += food.buff_amount
-    
-        
-
-
-    
 
 class Player(Character):
+    """The players sub-class meant for the current player of the game"""
     def __init__(self, name, health, stamina, attack, defense, base_damage):
         super().__init__(name, health, stamina, attack, defense, base_damage)
     def basic_attack(self):
+        """basic attack text"""
         if self._weapon:
             name = self._weapon.get_name()
-            slow_print(f"You attack the enemy with {name}", 0.02)
+            slow_print(f"You attack with {name}", 0.02)
             
         else:
             possible_actions = [" a punch"," a kick", " a dropkick", " an uppercut"]
             random_num = randrange(len(possible_actions))
-            slow_print(f"You attack the enemy with {possible_actions[random_num]}", 0.02)
+            slow_print(f"You attack with {possible_actions[random_num]}", 0.02)
 
 
 class Enemy(Character):
     """ Subclass for all basic monsters or enemies in game"""
     def attack(self):
+        """Enemy attack text"""
         slow_print(f"The {self.get_name()} attacks the player", 0.02)

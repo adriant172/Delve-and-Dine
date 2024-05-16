@@ -1,3 +1,4 @@
+"""This will contain any food items that can be added to the game"""
 from items import Food, HEAL, DEFENSE_INCREASE, DAMAGE_INCREASE
 
 salt = Food("Rock Salts",is_ingredient=True, description="Simple and common salt crystals mined from underground deposits")

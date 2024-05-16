@@ -1,3 +1,6 @@
+"""Contains console menu functions 
+that provide a simple menu interface for 
+displaying static information"""
 from consolemenu import ConsoleMenu
 
 

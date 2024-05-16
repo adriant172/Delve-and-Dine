@@ -1,4 +1,7 @@
+""" General actions that can be utilized by both 
+the player and enemy classes, usually along the context of adjusting stats"""
 from random import randrange
+
 
 
 def apply_damage(attacker,defender):
